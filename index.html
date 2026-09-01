@@ -2,35 +2,44 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>New Tab</title>
+        <title>Link Center</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+
         <h1>Link Center</h1>
-        <div>
-            <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Light/Dark Mode</button>
+
+        <!-- The toggle switch button card stays at the top -->
+        <div class="toggle-card">
+            <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Mode</button>
         </div>
 
-        <div>
-            <h4>Schooling</h4>
-            <a href="https://clever.com" target="_blank">Visit Clever</a>
-            <a href="https://phm.instructure.com" target="_blank">Visit Canvas</a>
-            <a href="https://docs.google.com" target="_blank">Visit Google Docs</a>
-            <a href="https://drive.google.com" target="_blank">Visit Google Drive</a>
-        </div>
+        <!-- This container grid sits beneath the switch and organizes your cards -->
+        <main class="grid-container">
 
-        <div>
-            <h4>Games</h4>
-            <a href="https://coolmathgames.com" target="_blank">Visit Coolmath</a>
-            <a href="https://duckmath.com" target="_blank">Visit Duckmath</a>
-            <a href="https://freezenova.com" target="_blank">Visit FreezeNova</a>
-        </div>
+            <div>
+                <h4>Schooling</h4>
+                <a href="https://clever.com" target="_blank">Visit Clever</a>
+                <a href="https://instructure.com" target="_blank">Visit Canvas</a>
+                <a href="https://google.com" target="_blank">Visit Google Docs</a>
+                <a href="https://google.com" target="_blank">Visit Google Drive</a>
+            </div>
 
-        <div>
-            <h4>Social</h4>
-            <a href="https://mail.google.com" target="_blank">Visit Gmail</a>
-            <a href="https://github.com" target="_blank">Visit Github</a>
-        </div>
+            <div>
+                <h4>Games</h4>
+                <a href="https://coolmathgames.com" target="_blank">Visit Coolmath</a>
+                <a href="https://duckmath.com" target="_blank">Visit Duckmath</a>
+                <a href="https://freezenova.com" target="_blank">Visit FreezeNova</a>
+            </div>
+
+            <div>
+                <h4>Social</h4>
+                <a href="https://google.com" target="_blank">Visit Gmail</a>
+                <a href="https://github.com" target="_blank">Visit Github</a>
+            </div>
+
+        </main>
+
         <script src="script.js"></script>
     </body>
 </html>

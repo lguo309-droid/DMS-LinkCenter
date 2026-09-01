@@ -1,6 +1,5 @@
 /* 1. Global Themes & Variables */
 :root {
-  /* Light Theme Values (Your original colors) */
   --bg-body: #f4f7f6;
   --bg-card: #ffffff;
   --text-main: #333333;
@@ -14,17 +13,16 @@
 }
 
 body.dark-mode {
-  /* Dark Theme Values (Inverted smooth colors) */
   --bg-body: #121212;
   --bg-card: #1e1e1e;
   --text-main: #e0e0e0;
   --text-h1: #ffffff;
   --text-h4: #a0a0a0;
   --border-h4: #333333;
-  --bg-button: #2980b9; /* Slightly different blue adjustment if desired */
+  --bg-button: #2980b9;
   --bg-button-hover: #3498db;
   --text-button: #ffffff;
-  --shadow-card: rgba(0, 0, 0, 0.5); /* Stronger shadow for dark mode */
+  --shadow-card: rgba(0, 0, 0, 0.4);
 }
 
 /* 2. Reset */
@@ -37,76 +35,91 @@ body.dark-mode {
 /* 3. Body Styling */ 
 body { 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-  background-color: var(--bg-body); /* Variable applied */
-  color: var(--text-main);           /* Variable applied */
+  background-color: var(--bg-body); 
+  color: var(--text-main); 
   display: flex; 
   flex-direction: column; 
   align-items: center; 
-  justify-content: center; 
+  justify-content: flex-start; /* Changed to start so content flows naturally down */
   min-height: 100vh; 
-  padding: 20px; 
-  /* Smooth transition effect when swapping colors */
+  padding: 40px 20px; /* More breathing room at the top */
   transition: background-color 0.3s ease, color 0.3s ease;
 } 
 
 /* 4. Main Header */ 
 h1 { 
-  margin-bottom: 30px; 
-  color: var(--text-h1);            /* Variable applied */
+  margin-bottom: 20px; 
+  color: var(--text-h1); 
   font-size: 2.5rem; 
   text-transform: uppercase; 
   letter-spacing: 1px; 
   transition: color 0.3s ease;
 } 
 
-/* 5. Section Card Containers */ 
-div { 
-  background-color: var(--bg-card); /* Variable applied */
+/* 5. The Toggle Switch Card (Isolated top container) */
+.toggle-card {
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 30px;
+}
+
+/* 6. Dashboard Grid Container */
+.grid-container {
+  display: grid;
+  /* Automatically wraps columns. If screen width permits, it builds 3 side-by-side columns */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px; /* Handles spacing uniformly between all cards */
   width: 100%; 
-  max-width: 450px; 
-  margin-bottom: 20px; 
+  max-width: 1100px; /* Keeps layout cozy on large desktop monitors */
+}
+
+/* 7. Section Card Containers */ 
+div { 
+  background-color: var(--bg-card); 
+  width: 100%; 
   padding: 25px; 
   border-radius: 12px; 
-  box-shadow: 0 4px 15px var(--shadow-card); /* Variable applied */
+  box-shadow: 0 4px 15px var(--shadow-card); 
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 } 
 
-/* 6. Section Titles */ 
+/* 8. Section Titles */ 
 h4 { 
-  color: var(--text-h4);            /* Variable applied */
+  color: var(--text-h4); 
   font-size: 1.1rem; 
   margin-bottom: 15px; 
-  border-bottom: 2px solid var(--border-h4); /* Variable applied */
+  border-bottom: 2px solid var(--border-h4); 
   padding-bottom: 5px; 
   text-transform: uppercase; 
   letter-spacing: 0.5px; 
   transition: color 0.3s ease, border-color 0.3s ease;
 } 
 
-/* 7. Link / Button Styling */ 
+/* 9. Link / Button Styling */ 
 a { 
   display: block; 
   text-decoration: none; 
-  background-color: var(--bg-button); /* Variable applied */
-  color: var(--text-button);          /* Variable applied */
+  background-color: var(--bg-button); 
+  color: var(--text-button); 
   font-weight: bold; 
   text-align: center; 
   padding: 12px 20px; 
   margin-bottom: 10px; 
   border-radius: 6px; 
-  transition: background-color 0.3s ease, color 0.3s ease; 
+  transition: background-color 0.3s ease, transform 0.2s ease; 
 } 
 
-/* 8. Hover Effect */ 
+/* 10. Interactive Button Behaviors */ 
 a:hover { 
-  background-color: var(--bg-button-hover); /* Variable applied */
-}
+  background-color: var(--bg-button-hover); 
+  transform: translateY(-2px); /* Makes buttons pop up slightly when hovered! */
+} 
 
 a:last-child { 
   margin-bottom: 0; 
 }
 
-/* Custom styling to make the switch match your cards */
+/* 11. Dark Mode Switch Button Specifics */
 #theme-toggle {
   display: block;
   width: 100%;
@@ -125,5 +138,6 @@ a:last-child {
 #theme-toggle:hover {
   background-color: var(--bg-button-hover);
 }
+
 
 
