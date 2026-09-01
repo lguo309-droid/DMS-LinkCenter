@@ -1,76 +1,129 @@
-/* 1. Global Reset & Box Model Fix */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* Keeps padding inside our specified widths! */
+/* 1. Global Themes & Variables */
+:root {
+  /* Light Theme Values (Your original colors) */
+  --bg-body: #f4f7f6;
+  --bg-card: #ffffff;
+  --text-main: #333333;
+  --text-h1: #2c3e50;
+  --text-h4: #7f8c8d;
+  --border-h4: #ecf0f1;
+  --bg-button: #3498db;
+  --bg-button-hover: #2980b9;
+  --text-button: #ffffff;
+  --shadow-card: rgba(0, 0, 0, 0.05);
 }
 
-/* 2. Body Styling (The Background) */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f7f6; /* Soft light gray/green background */
-  color: #333333;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh; /* Forces the body to fill the entire screen height */
-  padding: 20px;
+body.dark-mode {
+  /* Dark Theme Values (Inverted smooth colors) */
+  --bg-body: #121212;
+  --bg-card: #1e1e1e;
+  --text-main: #e0e0e0;
+  --text-h1: #ffffff;
+  --text-h4: #a0a0a0;
+  --border-h4: #333333;
+  --bg-button: #2980b9; /* Slightly different blue adjustment if desired */
+  --bg-button-hover: #3498db;
+  --text-button: #ffffff;
+  --shadow-card: rgba(0, 0, 0, 0.5); /* Stronger shadow for dark mode */
 }
 
-/* 3. Main Header */
-h1 {
-  margin-bottom: 30px;
-  color: #2c3e50;
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* 2. Reset */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+} 
+
+/* 3. Body Styling */ 
+body { 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  background-color: var(--bg-body); /* Variable applied */
+  color: var(--text-main);           /* Variable applied */
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  min-height: 100vh; 
+  padding: 20px; 
+  /* Smooth transition effect when swapping colors */
+  transition: background-color 0.3s ease, color 0.3s ease;
+} 
+
+/* 4. Main Header */ 
+h1 { 
+  margin-bottom: 30px; 
+  color: var(--text-h1);            /* Variable applied */
+  font-size: 2.5rem; 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  transition: color 0.3s ease;
+} 
+
+/* 5. Section Card Containers */ 
+div { 
+  background-color: var(--bg-card); /* Variable applied */
+  width: 100%; 
+  max-width: 450px; 
+  margin-bottom: 20px; 
+  padding: 25px; 
+  border-radius: 12px; 
+  box-shadow: 0 4px 15px var(--shadow-card); /* Variable applied */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+} 
+
+/* 6. Section Titles */ 
+h4 { 
+  color: var(--text-h4);            /* Variable applied */
+  font-size: 1.1rem; 
+  margin-bottom: 15px; 
+  border-bottom: 2px solid var(--border-h4); /* Variable applied */
+  padding-bottom: 5px; 
+  text-transform: uppercase; 
+  letter-spacing: 0.5px; 
+  transition: color 0.3s ease, border-color 0.3s ease;
+} 
+
+/* 7. Link / Button Styling */ 
+a { 
+  display: block; 
+  text-decoration: none; 
+  background-color: var(--bg-button); /* Variable applied */
+  color: var(--text-button);          /* Variable applied */
+  font-weight: bold; 
+  text-align: center; 
+  padding: 12px 20px; 
+  margin-bottom: 10px; 
+  border-radius: 6px; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+} 
+
+/* 8. Hover Effect */ 
+a:hover { 
+  background-color: var(--bg-button-hover); /* Variable applied */
 }
 
-/* 4. Section Card Containers (Deep Dive on Box Model) */
-div {
-  background-color: #ffffff; /* White background for the card */
+a:last-child { 
+  margin-bottom: 0; 
+}
+
+/* Custom styling to make the switch match your cards */
+#theme-toggle {
+  display: block;
   width: 100%;
-  max-width: 450px; /* Looks great on desktop, shrinks on mobile */
-  margin-bottom: 20px; /* Space OUTSIDE the card (Box Model) */
-  padding: 25px; /* Space INSIDE the card (Box Model) */
-  border-radius: 12px; /* Smooth rounded corners */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
-}
-
-/* 5. Section Titles */
-h4 {
-  color: #7f8c8d;
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #ecf0f1; /* A light underline below the header */
-  padding-bottom: 5px;
+  border: none;
+  background-color: var(--bg-button);
+  color: var(--text-button);
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-/* 6. Link / Button Styling */
-a {
-  display: block; /* Turns the inline link into a block element (stacked) */
-  text-decoration: none; /* Removes the default blue underline */
-  background-color: #3498db; /* Bright blue button color */
-  color: #ffffff; /* White text */
-  font-weight: bold;
-  text-align: center;
-  padding: 12px 20px; /* Cushions the text inside the button */
-  margin-bottom: 10px; /* Pushes the next button down */
+  padding: 12px 20px;
   border-radius: 6px;
-  transition: background-color 0.3s ease; /* Makes color change smooth */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 7. Hover Effect */
-a:hover {
-  background-color: #2980b9; /* Darker blue when your mouse hovers over it */
-}
-
-/* Removes the extra bottom margin on the absolute last link */
-a:last-child {
-  margin-bottom: 0;
+#theme-toggle:hover {
+  background-color: var(--bg-button-hover);
 }
 
 
